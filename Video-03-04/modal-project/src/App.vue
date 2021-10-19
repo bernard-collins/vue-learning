@@ -1,8 +1,13 @@
 <template>
    <h1>{{ title }}</h1>
-   <Modal />
+   <br />
    <input type="text" ref="name" />
    <button @click="handleClick">click me</button>
+   <div v-if="showModal">
+      <Modal :header="header" :text="text" theme="makeUp" @close="toggleModal" />
+   </div>
+   <p>Welcome...</p>
+   <button @click.alt="toggleModal">open modal (alt)</button>
    <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 </template>
@@ -19,7 +24,10 @@ export default {
    },
    data() {
       return {
-         title: 'My first Vue App :)'
+         title: 'My first Vue App :)',
+         header: 'WAKE UP!',
+         text: 'Wake up!',
+         showModal: false
       };
    },
    methods: {
@@ -27,6 +35,9 @@ export default {
          console.log(this.$refs.name);
          this.$refs.name.classList.add('active');
          this.$refs.name.focus();
+      },
+      toggleModal() {
+         this.showModal = !this.showModal;
       }
    }
 };
