@@ -1,0 +1,7 @@
+# Video 1
+
+-  How to use Vue (CDN)
+-  Creating a Vue app
+-  Data & templates
+-  Click events
+-  Conditional Rendering
