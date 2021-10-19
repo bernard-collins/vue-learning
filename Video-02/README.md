@@ -1,0 +1,8 @@
+# Video 2
+
+-  Other mouse events
+-  Outputting lists (v-for)
+-  Attribute binding
+-  Dynamic classes
+-  Challenge: toggling favs
+-  Computed properties
