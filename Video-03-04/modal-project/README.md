@@ -1,4 +1,4 @@
-# Video 1
+# Video 3 & 4
 
 -  Why use the Vue CLI?
 -  Using the Vue CLI
