@@ -3,11 +3,26 @@
    <br />
    <input type="text" ref="name" />
    <button @click="handleClick">click me</button>
-   <div v-if="showModal">
-      <Modal :header="header" :text="text" theme="makeUp" @close="toggleModal" />
-   </div>
+   <teleport to=".modals" v-if="showModal">
+      <!-- <Modal :header="header" :text="text" theme="makeUp" @close="toggleModal" /> -->
+      <Modal theme="makeUp" @close="toggleModal">
+         <template v-slot:jump>
+            <a href="">Jump for your love</a>
+            <a href="">JUMP IN!</a>
+         </template>
+         <h1>WAKE UP!</h1>
+         <p>Wake Up!</p>
+      </Modal>
+   </teleport>
+   <teleport to=".modals" v-if="showModalTwo">
+      <Modal @close="toggleModalTwo">
+         <h1>MURMAIDER! MURMAIDER!</h1>
+         <p>One two three four five six seven eight</p>
+      </Modal>
+   </teleport>
    <p>Welcome...</p>
    <button @click.alt="toggleModal">open modal (alt)</button>
+   <button @click.shift="toggleModalTwo">open modal (shift)</button>
    <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 </template>
@@ -24,10 +39,11 @@ export default {
    },
    data() {
       return {
-         title: 'My first Vue App :)',
-         header: 'WAKE UP!',
-         text: 'Wake up!',
-         showModal: false
+         title: 'My first Vue App',
+         // header: 'WAKE UP!',
+         // text: 'Wake up!',
+         showModal: false,
+         showModalTwo: false
       };
    },
    methods: {
@@ -38,13 +54,17 @@ export default {
       },
       toggleModal() {
          this.showModal = !this.showModal;
+      },
+      toggleModalTwo() {
+         this.showModalTwo = !this.showModalTwo;
       }
    }
 };
 </script>
 
 <style>
-#app {
+#app,
+.modals {
    font-family: Avenir, Helvetica, Arial, sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
