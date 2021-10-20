@@ -1,6 +1,10 @@
 # Video 6
 
--  forms & input fields
+-  Forms & Input fields
+-  2-Way Data Binding
+-  Select Boxes
+-  Checkboxes
+-  Keyboard Events
 
 ## modal-project
 
