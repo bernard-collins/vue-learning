@@ -5,6 +5,8 @@
 -  Select Boxes
 -  Checkboxes
 -  Keyboard Events
+-  Deleting Skills
+-  Submitting Forms
 
 ## modal-project
 

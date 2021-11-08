@@ -1,5 +1,5 @@
 <template>
-   <form>
+   <form @submit.prevent="handleSubmit">
       <label>Email:</label>
       <input type="email" required v-model="email" />
 
@@ -13,7 +13,10 @@
       </select>
 
       <label>Skills</label>
-      <input type="text" v-model="tempSkill" @keyup="addSkill" />
+      <input type="text" v-model="tempSkill" @keyup.alt="addSkill" />
+      <div v-for="skill in skills" :key="skill" class="pill">
+         <span @click="deleteSkill(skill)">{{ skill }}</span>
+      </div>
 
       <div class="terms">
          <input type="checkbox" v-model="terms" required />
@@ -37,6 +40,9 @@
          <input type="checkbox" value="Lee" v-model="names" />
          <label>Lee</label>
       </div>
+      <div class="submit">
+         <button>Create an Account</button>
+      </div>
    </form>
    <p>Email: {{ email }}</p>
    <p>Password: {{ password }}</p>
@@ -54,6 +60,7 @@ export default {
          role: 'designer',
          terms: false,
          tempSkill: '',
+         skills: [],
          names: ['Dom', 'Clay', 'Lee']
       };
    },
@@ -61,7 +68,20 @@ export default {
       addSkill(e) {
          //  console.log(e);
          if (e.key === ',' && this.tempSkill) {
+            if (!this.skills.includes(this.tempSkill)) {
+               this.skills.push(this.tempSkill);
+            }
+            this.tempSkill = '';
          }
+      },
+      deleteSkill(skill) {
+         this.skills = this.skills.filter(item => {
+            return skill !== item;
+         });
+      },
+      handleSubmit() {
+         console.log('form submitted');
+         // validate password
       }
    }
 };
@@ -101,5 +121,28 @@ input[type='checkbox'] {
    margin: 0 10px 0 0;
    position: relative;
    top: 2px;
+}
+.pill {
+   display: inline-block;
+   margin: 20px 10px 0 0;
+   padding: 6px 12px;
+   background: #eee;
+   border-radius: 20px;
+   font-size: 12px;
+   letter-spacing: 1px;
+   font-weight: bold;
+   color: #777;
+   cursor: pointer;
+}
+button {
+   background: #0b6dff;
+   border: 0;
+   padding: 10px 20px;
+   margin-top: 20px;
+   color: white;
+   border-radius: 20px;
+}
+.submit {
+   text-align: center;
 }
 </style>
