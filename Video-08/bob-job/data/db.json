@@ -1,0 +1,7 @@
+{
+   "jobs": [
+      { "title": "Bobs Odd Jobs", "id": 1, "details": "Pizza Man Extraudinair" },
+      { "title": "Jobs Bobs Odd", "id": 2, "details": "Extraudinair Pizza Man" },
+      { "title": "Odd Jobs Bobs", "id": 3, "details": "Man Extraudinair Pizza" }
+   ]
+}
