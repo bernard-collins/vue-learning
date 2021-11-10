@@ -1,10 +1,14 @@
 <template>
    <div class="home">
       <h1>Home</h1>
-      <input type="text" v-model="search" />
+      <PostList v-if="showPosts" :posts="posts" />
+      <button @click="showPosts = !showPosts">toggle posts</button>
+      <button @click="posts.pop()">delete a post</button>
+
+      <!-- <input type="text" v-model="search" />
       <p>search term - {{ search }}</p>
       <div v-for="name in matchingNames" :key="name">{{ name }}</div>
-      <button @click="handleClick">stop watching</button>
+      <button @click="handleClick">stop watching</button> -->
 
       <!-- <p>{{ name }}</p> -->
 
@@ -24,33 +28,49 @@
 </template>
 
 <script>
+import PostList from '../components/PostList.vue';
+import { ref } from 'vue';
+
 // import { ref, reactive } from 'vue';
-import { computed, ref, watch, watchEffect } from 'vue';
+// import { computed, ref, watch, watchEffect } from 'vue';
 
 export default {
    name: 'Home',
+   components: { PostList },
    setup() {
-      const search = ref('');
-      const names = ref(['Dom', 'Lee', 'Clay', 'Lambert', 'Wilfred', 'Warren']);
+      const posts = ref([
+         {
+            title: 'Welcome to the Jungle',
+            body: 'We got fun and games Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel quam bibendum, rhoncus est a, sagittis odio. Nullam laoreet vitae turpis vitae ultrices. Morbi ac pellentesque massa. Sed imperdiet tincidunt lectus, id hendrerit nisi vulputate et. Donec fermentum posuere massa, vitae porttitor sem lobortis ut. Curabitur ultricies nisl justo, in iaculis dui malesuada id. Morbi viverra, velit non facilisis convallis, turpis est cursus sapien, id aliquet eros tortor ac diam.',
+            id: 1
+         },
+         { title: 'Reach for the stars', body: 'Climb every mountain high', id: 2 }
+      ]);
+      const showPosts = ref(true);
 
-      const stopWatch = watch(search, () => {
-         console.log('watch function ran');
-      });
+      return { posts, showPosts };
 
-      const stopEffect = watchEffect(() => {
-         console.log('watchEffect function ran', search.value);
-      });
+      // const search = ref('');
+      // const names = ref(['Dom', 'Lee', 'Clay', 'Lambert', 'Wilfred', 'Warren']);
 
-      const matchingNames = computed(() => {
-         return names.value.filter((name) => name.includes(search.value));
-      });
+      // const stopWatch = watch(search, () => {
+      //    console.log('watch function ran');
+      // });
 
-      const handleClick = () => {
-         stopWatch();
-         stopEffect();
-      };
+      // const stopEffect = watchEffect(() => {
+      //    console.log('watchEffect function ran', search.value);
+      // });
 
-      return { names, search, matchingNames, handleClick };
+      // const matchingNames = computed(() => {
+      //    return names.value.filter((name) => name.includes(search.value));
+      // });
+
+      // const handleClick = () => {
+      //    stopWatch();
+      //    stopEffect();
+      // };
+
+      // return { names, search, matchingNames, handleClick };
 
       // const name = computed(() => {
       //    return 'Shaun';
