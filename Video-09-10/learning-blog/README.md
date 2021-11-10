@@ -14,6 +14,10 @@
 -  Lifecycle hooks in setup
 -  Fetching data in setup
 -  Reusable composable functions
+-  Creating a Loading Spinner
+-  Making a Web Form
+-  Making a POST Request
+-  Future Async Lesson & Extra Styling
 
 # learning-blog
 
