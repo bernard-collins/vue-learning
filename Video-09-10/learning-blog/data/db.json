@@ -11,6 +11,12 @@
          "title": "I did my time",
          "body": "And I want out",
          "tags": ["Psychosocial", "Slipknot", "metal"]
+      },
+      {
+         "title": "Testing",
+         "body": "hdhdhdh",
+         "tags": ["HipHip"],
+         "id": 3
       }
    ]
 }
