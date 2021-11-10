@@ -19,6 +19,14 @@
 -  Making a POST Request
 -  Future Async Lesson & Extra Styling
 
+# Video 11
+
+-  Routing Recap & Navbar
+-  Using useRouter
+-  Using useRoute
+-  Creating a Tag Route
+-  Creating a Tag Cloud
+
 # learning-blog
 
 ## Project setup
