@@ -1,0 +1,16 @@
+{
+   "posts": [
+      {
+         "id": 1,
+         "title": "No-one can destroy the metal",
+         "body": "The metal will strike you down with a vicious blow",
+         "tags": ["vanquished", "foes", "of", "the", "metal"]
+      },
+      {
+         "id": 2,
+         "title": "I did my time",
+         "body": "And I want out",
+         "tags": ["Psychosocial", "Slipknot", "metal"]
+      }
+   ]
+}

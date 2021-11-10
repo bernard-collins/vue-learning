@@ -1,9 +1,15 @@
 <template>
    <div class="home">
       <h1>Home</h1>
-      <PostList v-if="showPosts" :posts="posts" />
+      <div v-if="error">{{ error }}</div>
+      <div v-if="posts.length">
+         <PostList :posts="posts" />
+      </div>
+      <div v-else>Loading...</div>
+
+      <!-- <PostList v-if="showPosts" :posts="posts" />
       <button @click="showPosts = !showPosts">toggle posts</button>
-      <button @click="posts.pop()">delete a post</button>
+      <button @click="posts.pop()">delete a post</button> -->
 
       <!-- <input type="text" v-model="search" />
       <p>search term - {{ search }}</p>
@@ -38,17 +44,36 @@ export default {
    name: 'Home',
    components: { PostList },
    setup() {
-      const posts = ref([
-         {
-            title: 'Welcome to the Jungle',
-            body: 'We got fun and games Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel quam bibendum, rhoncus est a, sagittis odio. Nullam laoreet vitae turpis vitae ultrices. Morbi ac pellentesque massa. Sed imperdiet tincidunt lectus, id hendrerit nisi vulputate et. Donec fermentum posuere massa, vitae porttitor sem lobortis ut. Curabitur ultricies nisl justo, in iaculis dui malesuada id. Morbi viverra, velit non facilisis convallis, turpis est cursus sapien, id aliquet eros tortor ac diam.',
-            id: 1
-         },
-         { title: 'Reach for the stars', body: 'Climb every mountain high', id: 2 }
-      ]);
-      const showPosts = ref(true);
+      // const posts = ref([
+      //    {
+      //       title: 'Welcome to the Jungle',
+      //       body: 'We got fun and games Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel quam bibendum, rhoncus est a, sagittis odio. Nullam laoreet vitae turpis vitae ultrices. Morbi ac pellentesque massa. Sed imperdiet tincidunt lectus, id hendrerit nisi vulputate et. Donec fermentum posuere massa, vitae porttitor sem lobortis ut. Curabitur ultricies nisl justo, in iaculis dui malesuada id. Morbi viverra, velit non facilisis convallis, turpis est cursus sapien, id aliquet eros tortor ac diam.',
+      //       id: 1
+      //    },
+      //    { title: 'Reach for the stars', body: 'Climb every mountain high', id: 2 }
+      // ]);
+      const posts = ref([]);
+      const error = ref(null);
+      const load = async () => {
+         try {
+            let data = await fetch('http://localhost:3000/posts');
+            if (!data.ok) {
+               throw Error('no data available');
+            }
+            posts.value = await data.json();
+            // console.log(data);
+         } catch (err) {
+            error.value = err.message;
+            console.log(error.value);
+         }
+      };
 
-      return { posts, showPosts };
+      load();
+
+      return { posts, error };
+
+      // const showPosts = ref(true);
+      // return { posts, showPosts };
 
       // const search = ref('');
       // const names = ref(['Dom', 'Lee', 'Clay', 'Lambert', 'Wilfred', 'Warren']);

@@ -8,6 +8,13 @@
 -  Computed values
 -  watch & watchEffect
 
+# Video 10
+
+-  Using props in setup
+-  Lifecycle hooks in setup
+-  Fetching data in setup
+-  Reusable composable functions
+
 # learning-blog
 
 ## Project setup
