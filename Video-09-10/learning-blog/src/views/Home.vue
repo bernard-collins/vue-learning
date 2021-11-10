@@ -1,10 +1,10 @@
 <template>
    <div class="home">
       <h1>Home</h1>
-      <div v-if="error">{{ error }}</div>
       <div v-if="posts.length">
          <PostList :posts="posts" />
       </div>
+      <div v-else-if="error">{{ error }}</div>
       <div v-else>Loading...</div>
 
       <!-- <PostList v-if="showPosts" :posts="posts" />
@@ -35,7 +35,8 @@
 
 <script>
 import PostList from '../components/PostList.vue';
-import { ref } from 'vue';
+import getPosts from '../composables/getPosts';
+// import { ref } from 'vue';
 
 // import { ref, reactive } from 'vue';
 // import { computed, ref, watch, watchEffect } from 'vue';
@@ -44,6 +45,9 @@ export default {
    name: 'Home',
    components: { PostList },
    setup() {
+      const { posts, error, load } = getPosts();
+
+      load();
       // const posts = ref([
       //    {
       //       title: 'Welcome to the Jungle',
@@ -52,23 +56,24 @@ export default {
       //    },
       //    { title: 'Reach for the stars', body: 'Climb every mountain high', id: 2 }
       // ]);
-      const posts = ref([]);
-      const error = ref(null);
-      const load = async () => {
-         try {
-            let data = await fetch('http://localhost:3000/posts');
-            if (!data.ok) {
-               throw Error('no data available');
-            }
-            posts.value = await data.json();
-            // console.log(data);
-         } catch (err) {
-            error.value = err.message;
-            console.log(error.value);
-         }
-      };
 
-      load();
+      // const posts = ref([]);
+      // const error = ref(null);
+      // const load = async () => {
+      //    try {
+      //       let data = await fetch('http://localhost:3000/posts');
+      //       if (!data.ok) {
+      //          throw Error('no data available');
+      //       }
+      //       posts.value = await data.json();
+      //       // console.log(data);
+      //    } catch (err) {
+      //       error.value = err.message;
+      //       console.log(error.value);
+      //    }
+      // };
+
+      // load();
 
       return { posts, error };
 
