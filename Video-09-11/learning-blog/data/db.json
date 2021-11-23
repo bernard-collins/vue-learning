@@ -1,44 +1,28 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "No-one can destroy the metal",
-      "body": "The metal will strike you down with a vicious blow",
-      "tags": [
-        "vanquished",
-        "foes",
-        "of",
-        "the",
-        "metal"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "I did my time",
-      "body": "And I want out",
-      "tags": [
-        "Psychosocial",
-        "Slipknot",
-        "metal"
-      ]
-    },
-    {
-      "title": "Testing",
-      "body": "hdhdhdh",
-      "tags": [
-        "HipHip"
-      ],
-      "id": 3
-    },
-    {
-      "title": "Bee Movie Script",
-      "body": "According to all known laws\nof aviation,\nthere is no way a bee\nshould be able to fly.\nIts wings are too small to get\nits fat little body off the ground.\nThe bee, of course, flies anyway\nbecause bees don't care\nwhat humans think is impossible.",
-      "tags": [
-        "Bee",
-        "Movie",
-        "Script"
-      ],
-      "id": 4
-    }
-  ]
+   "posts": [
+      {
+         "id": 1,
+         "title": "No-one can destroy the metal",
+         "body": "The metal will strike you down with a vicious blow",
+         "tags": ["vanquished", "foes", "of", "the", "metal"]
+      },
+      {
+         "id": 2,
+         "title": "I did my time",
+         "body": "And I want out",
+         "tags": ["Psychosocial", "Slipknot", "metal"]
+      },
+      {
+         "title": "Testing",
+         "body": "hdhdhdh",
+         "tags": ["HipHip"],
+         "id": 3
+      },
+      {
+         "title": "Bee Movie Script",
+         "body": "According to all known laws\nof aviation,\nthere is no way a bee\nshould be able to fly.\nIts wings are too small to get\nits fat little body off the ground.\nThe bee, of course, flies anyway\nbecause bees don't care\nwhat humans think is impossible.",
+         "tags": ["Bee", "Movie", "Script"],
+         "id": 4
+      }
+   ]
 }
